@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>enlil &#8212; enlil 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Crate enlil" href="crates/enlil/lib.html" />
+    <link rel="prev" title="Enlil documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="enlil">
+<h1>enlil<a class="headerlink" href="#enlil" title="Link to this heading">¶</a></h1>
+<p>rust async framework w/ observability, maintainability, documentation built in</p>
+<p>Enlil was a supreme Mesopotamian god of wind, air, earth, and storms. He is considered the King of the Gods who: separated heaven and earth, created humanity, and granted kingship.</p>
+<section id="modules">
+<h2>modules<a class="headerlink" href="#modules" title="Link to this heading">¶</a></h2>
+<p>This framework asks you to compose code into modules (not rust modules). The module defines its outputs and state explicitly. Each module is run either on demand (its dependencies change) or periodically. Helpful boilerplate is built around the module:</p>
+<ul class="simple">
+<li><p>observability with open telemetry</p></li>
+<li><p>a data dictionary</p></li>
+<li><p>module descriptions</p></li>
+<li><p>interdependency of modules viewed as a web</p></li>
+<li><p>inter-module communication</p></li>
+<li><p>failure recreate</p></li>
+<li><p>module testing framework</p></li>
+</ul>
+<p>Additional benefits of this framework allow for modules to be dynamically swapped or restarted.</p>
+</section>
+<section id="services">
+<h2>services<a class="headerlink" href="#services" title="Link to this heading">¶</a></h2>
+<p>Modules are contained inside a service. A service is an independent process that runs the modules using async. The service starts the modules and Common Modules can be instantiated to do the following:</p>
+<ul class="simple">
+<li><p>push service status updates to a message broker</p></li>
+<li><p>push logged events to a message broker</p></li>
+<li><p>subscribe to data in a message broker</p></li>
+<li><p>start and stop other modules</p></li>
+</ul>
+<p>Additionally, when a modules experiences an unanticipated failure, the service writes the preceding state and inputs to file so the failure can be re-created offline.</p>
+</section>
+<section id="observability">
+<h2>observability<a class="headerlink" href="#observability" title="Link to this heading">¶</a></h2>
+<p>Each module and service is integrated with open telemetry observability. Tracing is automatic for each module, and the service as a whole. Variables can become metrics when they are configured in the modules. Each module can have independent log levels for open telemetry logs vs logs that are kept for the system.</p>
+</section>
+<section id="documentation">
+<h2>documentation<a class="headerlink" href="#documentation" title="Link to this heading">¶</a></h2>
+<p>The implementation of each module requires documenting each important variable right where you use it in code. This documentation is extractable and converts to a data dictionary. The data interdependence is also mapped and included in the dictionary.</p>
+<p>Because each module explicitly depends on other data, the module data flow can be visualized in a web. This can be used to inspect for proper design. Included in the module map are descriptions of the modules.</p>
+<p>Modules that push data as “service status” are marked inside their configuration allowing the service to handle updating any configured messenger services. Implementing a Common Module to subscribe to messenger data allows an async api document to be generated for the messenger service.</p>
+</section>
+<section id="testing">
+<h2>testing<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h2>
+<p>Having clear module interfaces allows modules to be tested independently.</p>
+<p>When a module fails in production, its inputs and state are captured for re-creation. This sequence (failure capture) can be used immediately as a test case for the module, allowing for recreation, validation, and as a test case.</p>
+<p>The failure capture method can also be used to generate test cases. Simply trigger the capture durning normal operation, change the input or initial state, and generate the failure condition that is expected.</p>
+<p>Modules that do not perform hardware communication can be fully integration tested in this way. This limits detailed integration testing to only the processes that interact with hardware.</p>
+<p>Traditional methods involving mocking, hardware in the loop, and full system testing can be used to round out coverage. However these methods are progressively more expensive and can be minimized with more low level integration testing.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">enlil</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">README</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#modules">modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#services">services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#observability">observability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing">testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="crates/enlil/lib.html">Crate <code class="docutils literal notranslate"><span class="pre">enlil</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="crates/enlil/main.html">enlil</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Enlil documentation</a></li>
+      <li>Next: <a href="crates/enlil/lib.html" title="next chapter">Crate <code class="docutils literal notranslate"><span class="pre">enlil</span></code></a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Kevan Anderson.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/readme.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
