@@ -38,4 +38,4 @@ rust_crates = {
     "enlil": "..", # Path to your crate's source directory relative to conf.py
 }
 # Define where the generated documentation files will be placed
-rust_doc_dir = "source\crates" # This directory should be added to your .gitignore
+rust_doc_dir = "source/crates" # This directory should be added to your .gitignore
