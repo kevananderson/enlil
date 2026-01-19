@@ -1,0 +1,16 @@
+===============
+Crate ``enlil``
+===============
+
+
+.. rust:crate:: enlil
+   :index: 0
+
+
+   .. rust:use:: enlil
+      :used_name: self
+
+
+   .. rust:use:: enlil
+      :used_name: crate
+

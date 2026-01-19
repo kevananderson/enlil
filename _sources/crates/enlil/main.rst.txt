@@ -1,0 +1,26 @@
+=====
+enlil
+=====
+
+
+.. rust:executable:: enlil
+   :index: 0
+   :layout: [{"type":"name","value":"enlil"}]
+   :toc: enlil
+
+
+   .. rust:use:: enlil
+      :used_name: self
+
+
+   .. rust:use:: enlil
+      :used_name: crate
+
+
+   .. rust:use:: enlil::base_service::BaseService
+      :used_name: BaseService
+
+
+   .. rust:use:: enlil::service::Service
+      :used_name: Service
+
