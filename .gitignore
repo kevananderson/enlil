@@ -1,5 +1,5 @@
 /target
-/docs/crates
+/docs/source/crates
 /docs/build
 output.txt
 .venv

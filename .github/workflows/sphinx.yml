@@ -1,0 +1,59 @@
+name: Sphinx build and deploy
+
+on:
+  push:
+    branches:
+      - main # or your default branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x' # Use a suitable Python version
+
+    - name: Install Sphinx and dependencies
+      run: |
+        pip install -r docs/requirements.txt
+
+    # If your Rust project generates something needed by Sphinx (e.g., via a rustdoc extension
+    # or a script that generates files in the source directory), add a step here to build the Rust project.
+    
+    # TODO: this is planned for adding variable dictionary and module map for the 
+    # example project
+
+    # - name: Build Rust project (if needed for docs)
+    #   uses: actions-rs/toolchain@v1
+    #   with:
+    #     toolchain: stable
+    #     profile: minimal
+    #     override: true
+    # - run: |
+    #     cargo build --release
+    #     # Add any commands to run a Rust tool or script that populates the docs source dir
+
+    - name: Build HTML documentation
+      run: |
+        make clean html
+      working-directory: ./docs/ # Adjust this if your docs are in a different directory
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: html-docs
+        path: docs/build/html/ # The path to the generated HTML files
+
+    # Optional: Step to deploy to GitHub Pages
+    - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main' # Only deploy from the main branch
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/build/html/
+        # Ensure GitHub Pages is configured to use the gh-pages branch

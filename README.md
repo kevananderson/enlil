@@ -1,6 +1,8 @@
 # enlil
 rust async framework w/ observability, maintainability, documentation built in
 
+Enlil was a supreme Mesopotamian god of wind, air, earth, and storms. He is considered the King of the Gods who: separated heaven and earth, created humanity, and granted kingship.
+
 ## modules
 
 This framework asks you to compose code into modules (not rust modules). The module defines its outputs and state explicitly. Each module is run either on demand (its dependencies change) or periodically. Helpful boilerplate is built around the module: 

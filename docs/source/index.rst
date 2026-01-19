@@ -15,3 +15,4 @@ observe using open telemetry.
    :caption: Contents:
 
    crates/enlil/lib
+   crates/enlil/main
