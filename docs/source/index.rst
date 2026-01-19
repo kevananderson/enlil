@@ -6,13 +6,15 @@
 Enlil documentation
 ===================
 
-The Enlil project is a framework for building rust services that
-follow a maintainable pattern that is also easy to test and
-observe using open telemetry.
+A rust async framework w/ observability, maintainability, documentation built in.
+
+See the :doc:`README<readme>` for details.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   README<readme>
    crates/enlil/lib
    crates/enlil/main
+   

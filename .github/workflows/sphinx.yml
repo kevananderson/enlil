@@ -49,11 +49,11 @@ jobs:
         name: html-docs
         path: docs/build/html/ # The path to the generated HTML files
 
-    # Optional: Step to deploy to GitHub Pages
+    # Ensure GitHub Pages is configured to use the gh-pages branch
     - name: Deploy to GitHub Pages
       if: github.ref == 'refs/heads/main' # Only deploy from the main branch
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: docs/build/html/
-        # Ensure GitHub Pages is configured to use the gh-pages branch
+        
